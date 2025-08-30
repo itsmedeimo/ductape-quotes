@@ -26,21 +26,27 @@ header p {
   margin: 0.3rem 0 0 0;
 }
 
-/* Main is the flexible middle */
+/* Main centers content between header & footer */
 main {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
   text-align: center;
   padding: 0 1rem;
 }
 
+main section {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Quote text scales with screen size */
 #quote {
-  font-size: clamp(1.2rem, 3vw, 2.2rem); /* dynamic scaling */
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
   font-style: italic;
   line-height: 1.4;
-  max-width: 800px;
   margin: 0 auto;
   word-wrap: break-word;
 }
@@ -52,26 +58,27 @@ main {
 
 /* 🎲📋 action buttons */
 .quote-actions {
-  margin-top: 2rem;
+  margin-top: 2rem; /* spacing below author */
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   justify-content: center;
 }
 
 .icon-btn {
   background: none;
   border: none;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2.5rem); /* dynamic size */
   cursor: pointer;
   transition: transform 0.2s ease;
   color: #FA003F;
+  line-height: 1;
 }
 
 .icon-btn:hover {
   transform: scale(1.2);
 }
 
-/* Footer always sticks to bottom */
+/* Footer always at bottom */
 footer {
   text-align: center;
   padding: 0.8rem;
