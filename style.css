@@ -1,87 +1,90 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: "Georgia", "Times New Roman", serif;
-  }
-  
-  body {
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  margin: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: "Georgia", "Times New Roman", serif;
+  overflow: auto; /* 🚫 no scrollbars */
+  display: grid;
+  grid-template-rows: auto 1fr auto; /* header, main, footer */
+}
 
-  }
-  
-  header {
-    text-align: center;
-    padding: 1rem 1rem 0.5rem 1rem; /* smaller padding pushes title higher */
-  }
-  
-  header h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    margin: 0.3rem 0 0.8rem 0;
-  }
-  
-  main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 1rem;
-  }
-  
-  #quote {
-    font-size: 2rem;
-    font-style: italic;
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  #author {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    font-style: normal;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-  }
-  
-  /* 📱 Responsive tweaks */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2.2rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    #quote {
-      font-size: 1.5rem;
-    }
-    #author {
-      font-size: 1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.8rem;
-    }
-    #quote {
-      font-size: 1.2rem;
-    }
-    #author {
-      font-size: 0.9rem;
-    }
-  }
-  
+/* Header at top */
+header {
+  text-align: center;
+  padding: 0.8rem 1rem 0.5rem 1rem;
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.2rem 0;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin: 0.3rem 0 0 0;
+}
+
+/* Main is the flexible middle */
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Quote text scales with screen size */
+#quote {
+  font-size: clamp(1.2rem, 3vw, 2.2rem); /* dynamic scaling */
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 800px;
+  margin: 0 auto;
+  word-wrap: break-word;
+}
+
+#author {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  margin-top: 1rem;
+}
+
+/* 🎲📋 action buttons */
+.quote-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  color: #FA003F;
+}
+
+.icon-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Footer always sticks to bottom */
+footer {
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 768px) {
+  header h1 { font-size: 2.2rem; }
+  header p { font-size: 1rem; }
+}
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.8rem; }
+  header p { font-size: 0.9rem; }
+}
